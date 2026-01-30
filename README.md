@@ -312,20 +312,22 @@ _AI assistant_
 
 ---
 
-### Issue 3 (Optional): [Title]
+### Issue 3 (Optional): [no internet]
 
 **Cause / diagnosis:**  
-_[Explain what you think caused it]_
+Don't have internet to clone github _
 
 **Fix:**  
-_[The exact command/config change you used to solve it]_
+restart my network card and get ip again_
 
 ```bash
-[Your fix command/code here]
+ip addr show
+sudo ip link set ens33 up
+sudo dhclient ens33
 ```
 
 **Reference:**  
-_[Official ROS docs? StackOverflow? AI assistant? Something else?]_
+_AI assistant_
 
 ---
 
@@ -339,14 +341,14 @@ Choose one of the issues above and document how you used AI to solve it.
 
 **Your prompt:**
 ```
-[Copy-paste your actual message to the AI, not a summary]
+在vmware中使用Ubuntu22.04时，桥接模式已开启，但是没有网络
 ```
 
 ### 5.2 Key helpful part of the AI's answer
 
 **AI's response (relevant part only):**
 ```
-[Quote only the relevant part of the AI's answer]
+桥接模式无网络的常见原因：VMware 虚拟网卡未启用 → Ubuntu 网络配置未自动获取IP → 防火墙/网络服务异常 → VMware 桥接驱动问题，按顺序排查即可。
 ```
 
 ### 5.3 What you changed or ignored and why
@@ -357,18 +359,20 @@ Explain briefly:
 - Did you double-check with official docs?
 
 **Your explanation:**  
-_[Write your analysis here]_
+_ignored(unsafe): AI told me to close the fire wall to connet with the network in windows system _
 
 ### 5.4 Final solution you applied
 
 Show the exact command or file edit that fixed the problem:
 
 ```bash
-[Your final command/code here]
+ip addr show
+sudo ip link set ens33 up
+sudo dhclient ens33
 ```
 
 **Why this worked:**  
-_[Brief explanation]_
+_It mainly equals to reopen thenetwork card and get new ip address._
 
 ---
 
@@ -383,7 +387,9 @@ Short but thoughtful:
 
 **Your reflection:**
 
-_[Write your 3-5 sentence reflection here]_
+_Every time before using ros2 have to build workspce at the beginning.
+Actually I set up those enviornment mainly by myself by using cmd in terminal in vmware,
+So i'm quiet proficient to find out and solve problems._
 
 ---
 
