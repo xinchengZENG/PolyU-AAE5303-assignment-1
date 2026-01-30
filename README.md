@@ -273,37 +273,42 @@ _<img width="982" height="286" alt="talker_listener" src="https://github.com/use
 
 > **Note:** Write 2–3 issues, even if small. This section is crucial — it demonstrates understanding and problem-solving.
 
-### Issue 1: [Write the exact error message or problem]
+### Issue 1: [Fail to pass smoke_test]
 
 **Cause / diagnosis:**  
-_[Explain what you think caused it]_
+1.Didn't install enough needed dependings   
+2.Did't build workspace in docker
 
 **Fix:**  
-_[The exact command/config change you used to solve it]_
+Build workspace before or install dependings again
 
 ```bash
-[Your fix command/code here]
+colcon build --packages-select env_check_pkg
 ```
 
 **Reference:**  
-_[Official ROS docs? StackOverflow? AI assistant? Something else?]_
+
+_myself_
 
 ---
 
-### Issue 2: [Another real error or roadblock]
+### Issue 2: [Fail to build ROS 2 workspace]
 
 **Cause / diagnosis:**  
-_[Explain what you think caused it]_
+Error：Could not find ament_cmake package.The lack of ament_cmake package leads to the CMakeLists.txt of env_check_pkg fail to find the ROS 2 compilation toolchain
 
 **Fix:**  
-_[The exact command/config change you used to solve it]_
+_install the package and build again_
 
 ```bash
-[Your fix command/code here]
+apt install -y ros-humble-ament-cmake ros-humble-rclcpp ros-humble-std-msgs
+cd /root/aae5303-env-check/ros2_ws
+source /opt/ros/humble/setup.bash
+colcon build --packages-select env_check_pkg
 ```
 
 **Reference:**  
-_[Official ROS docs? StackOverflow? AI assistant? Something else?]_
+_AI assistant_
 
 ---
 
