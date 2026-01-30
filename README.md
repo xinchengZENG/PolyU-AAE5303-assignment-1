@@ -8,19 +8,19 @@
 ## 1. System Information
 
 **Laptop model:**  
-_[Lenovo ThinkPad T14P]_
+_Lenovo ThinkPad T14P_
 
 **CPU / RAM:**  
-_[e.g., Intel Core i7-11800H, 16GB RAM]_
+_Intel Core U9-285H, 32GB RAM_
 
 **Host OS:**  
-_[Ubuntu 22.04]_
+_Ubuntu 22.04_
 
 **Linux/ROS environment type:**  
 _[Choose one:]_
 - [ ] Dual-boot Ubuntu
 - [ ] WSL2 Ubuntu
-- [ ] Ubuntu in VM (UTM/VirtualBox/VMware/Parallels)
+- [√] Ubuntu in VM (UTM/VirtualBox/VMware/Parallels)
 - [ ] Docker container
 - [ ] Lab PC
 - [ ] Remote Linux server
@@ -34,7 +34,7 @@ _[Choose one:]_
 Describe briefly how you created/activated your Python environment:
 
 **Tool used:**  
-_[venv / conda / system Python]_
+_venv_
 
 **Key commands you ran:**
 ```bash
@@ -44,7 +44,7 @@ pip install -r requirements.txt
 ```
 
 **Any deviations from the default instructions:**  
-_[Describe any changes you made, or write "None"]_
+_None_
 
 ### 2.2 Test Results
 
@@ -255,13 +255,13 @@ _[Write your 3-5 sentence reflection here]_
 ✅ **I confirm that I performed this setup myself and all screenshots/logs reflect my own environment.**
 
 **Name:**  
-_[Your name]_
+_[Zeng xincheng]_
 
 **Student ID:**  
-_[Your student ID]_
+_[25097041G]_
 
 **Date:**  
-_[Date of submission]_
+_[2026/1/30]_
 
 ---
 
