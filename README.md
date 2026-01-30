@@ -51,11 +51,12 @@ _None_
 Run these commands and paste the actual terminal output (not just screenshots):
 
 ```bash
-(.venv) root@zxc-virtual-machine:~/aae5303_env# python scripts/run_smoke_tests.py
+(.venv) root@c50dcdd54c88:~/aae5303-env-check# python scripts/run_smoke_tests.py
 ```
 
 **Output:**
 ```
+
 ========================================
 AAE5303 One-command Environment Check
 Tip: read README.md for interpretation and fixes.
@@ -63,7 +64,7 @@ Tip: read README.md for interpretation and fixes.
 
 
 ========== Step 1: Python + ROS environment checks ==========
-Running: /root/aae5303_env/.venv/bin/python -u /root/aae5303_env/scripts/test_python_env.py
+Running: /root/aae5303-env-check/.venv/bin/python -u /root/aae5303-env-check/scripts/test_python_env.py
 ========================================
 AAE5303 Environment Check (Python + ROS)
 Goal: help you verify your environment and understand what each check means.
@@ -96,15 +97,15 @@ Step 10: Basic CLI availability
 ✅ Environment: {
   "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
   "python": "3.10.12",
-  "executable": "/root/aae5303_env/.venv/bin/python",
-  "cwd": "/root/aae5303_env",
+  "executable": "/root/aae5303-env-check/.venv/bin/python",
+  "cwd": "/root/aae5303-env-check",
   "ros": {
     "ROS_VERSION": "2",
     "ROS_DISTRO": "humble",
     "ROS_ROOT": null,
     "ROS_PACKAGE_PATH": null,
-    "AMENT_PREFIX_PATH": "/root/aae5303_env/ros2_ws/install/env_check_pkg:/opt/ros/humble",
-    "CMAKE_PREFIX_PATH": "/root/aae5303_env/ros2_ws/install/env_check_pkg"
+    "AMENT_PREFIX_PATH": "/opt/ros/humble",
+    "CMAKE_PREFIX_PATH": null
   }
 }
 ✅ Python version OK: 3.10.12
@@ -126,28 +127,30 @@ Step 10: Basic CLI availability
 ✅ colcon found: /usr/bin/colcon
 ✅ ROS 2 workspace build OK (env_check_pkg).
 ✅ ROS 2 runtime OK: talker and listener exchanged messages.
-✅ Binary 'python3' found at /root/aae5303_env/.venv/bin/python3
+✅ Binary 'python3' found at /root/aae5303-env-check/.venv/bin/python3
 
 All checks passed. You are ready for AAE5303 🚀
-✅ Python + ROS environment checks: PASS (10.9s)
+✅ Python + ROS environment checks: PASS (15.5s)
 
 ========== Step 2: Open3D point cloud pipeline ==========
-Running: /root/aae5303_env/.venv/bin/python -u /root/aae5303_env/scripts/test_open3d_pointcloud.py
-ℹ️ Loading /root/aae5303_env/data/sample_pointcloud.pcd ...
+Running: /root/aae5303-env-check/.venv/bin/python -u /root/aae5303-env-check/scripts/test_open3d_pointcloud.py
+ℹ️ Loading /root/aae5303-env-check/data/sample_pointcloud.pcd ...
 ✅ Loaded 8 points.
    • Centroid: [0.025 0.025 0.025]
    • Axis-aligned bounds: min=[0. 0. 0.], max=[0.05 0.05 0.05]
 ✅ Filtered point cloud kept 7 points.
-✅ Wrote filtered copy with 7 points to /root/aae5303_env/data/sample_pointcloud_copy.pcd
+✅ Wrote filtered copy with 7 points to /root/aae5303-env-check/data/sample_pointcloud_copy.pcd
    • AABB extents: [0.05 0.05 0.05]
    • OBB  extents: [0.08164966 0.07071068 0.05773503], max dim 0.0816 m
 🎉 Open3D point cloud pipeline looks good.
-✅ Open3D point cloud pipeline: PASS (1.2s)
+✅ Open3D point cloud pipeline: PASS (2.9s)
 
 ℹ️ Cleaned up 1 generated file(s) in data/.
 
 ========================================
 OVERALL RESULT: PASS
+========================================
+
 ```
 
 ```bash
@@ -156,14 +159,23 @@ python scripts/test_open3d_pointcloud.py
 
 **Output:**
 ```
+Running: /root/aae5303-env-check/.venv/bin/python -u /root/aae5303-env-check/scripts/test_open3d_pointcloud.py
+ℹ️ Loading /root/aae5303-env-check/data/sample_pointcloud.pcd ...
+✅ Loaded 8 points.
+   • Centroid: [0.025 0.025 0.025]
+   • Axis-aligned bounds: min=[0. 0. 0.], max=[0.05 0.05 0.05]
+✅ Filtered point cloud kept 7 points.
+✅ Wrote filtered copy with 7 points to /root/aae5303-env-check/data/sample_pointcloud_copy.pcd
+   • AABB extents: [0.05 0.05 0.05]
+   • OBB  extents: [0.08164966 0.07071068 0.05773503], max dim 0.0816 m
+🎉 Open3D point cloud pipeline looks good.
+✅ Open3D point cloud pipeline: PASS (2.9s)
 
+ℹ️ Cleaned up 1 generated file(s) in data/.
 ```
 
 **Screenshot:**  
-<img width="1540" height="1052" alt="smoke-test" src="https://github.com/user-attachments/assets/861b555f-11d2-4bbc-a3e3-e34b6c8213fa" />
-<img width="1212" height="202" alt="open3d" src="https://github.com/user-attachments/assets/12dbd641-a3e0-4c0f-b5b6-4531636b6d00" />
-
-
+<img width="1056" height="1026" alt="test" src="https://github.com/user-attachments/assets/ecea2879-78f0-4e38-a02b-d1158e3930fc" />
 
 ---
 
@@ -175,7 +187,7 @@ Paste the build output summary (final lines only):
 
 ```bash
 source /opt/ros/humble/setup.bash
-colcon build
+colcon build --packages-select env_check_pkg
 ```
 
 **Expected output:**
@@ -185,7 +197,11 @@ Summary: 1 package finished [x.xx s]
 
 **Your actual output:**
 ```
-[Paste your build summary here]
+Starting >>> env_check_pkg
+Finished <<< env_check_pkg [0.26s]                  
+
+Summary: 1 package finished [0.57s]
+
 ```
 
 ### 3.2 Run talker and listener
@@ -204,7 +220,11 @@ ros2 run env_check_pkg talker.py
 
 **Output (3–4 lines):**
 ```
-[Paste 3-4 lines of talker output here]
+[INFO] [1769770908.677073899] [env_check_pkg_talker]: AAE5303 talker ready (publishing at 2 Hz).
+[INFO] [1769770909.178005126] [env_check_pkg_talker]: Publishing: 'AAE5303 hello #0'
+[INFO] [1769770909.677656485] [env_check_pkg_talker]: Publishing: 'AAE5303 hello #1'
+[INFO] [1769770910.178224295] [env_check_pkg_talker]: Publishing: 'AAE5303 hello #2'
+[INFO] [1769770910.677921158] [env_check_pkg_talker]: Publishing: 'AAE5303 hello #3'
 ```
 
 **Run listener:**
@@ -214,18 +234,38 @@ ros2 run env_check_pkg listener.py
 
 **Output (3–4 lines):**
 ```
-[Paste 3-4 lines of listener output here]
+[INFO] [1769771130.371938475] [env_check_pkg_listener]: AAE5303 listener awaiting messages.
+[INFO] [1769771142.017851759] [env_check_pkg_listener]: I heard: 'AAE5303 hello #0'
+[INFO] [1769771142.520852877] [env_check_pkg_listener]: I heard: 'AAE5303 hello #1'
+[INFO] [1769771143.016114810] [env_check_pkg_listener]: I heard: 'AAE5303 hello #2'
+[INFO] [1769771143.518120237] [env_check_pkg_listener]: I heard: 'AAE5303 hello #3'
 ```
 
-**Alternative (using launch file):**
+**Alternative (using launch file):[√]**
 ```bash
 ros2 launch env_check_pkg env_check.launch.py
 ```
 
+**Output (3–4 lines):**
+```
+[INFO] [launch]: All log files can be found below /root/.ros/log/2026-01-30-18-23-00-912177-c50dcdd54c88-369
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [talker-1]: process started with pid [370]
+[INFO] [listener-2]: process started with pid [372]
+[listener-2] [INFO] [1769768581.000035453] [env_check_pkg_listener]: AAE5303 listener awaiting messages.
+[talker-1] [INFO] [1769768581.000753065] [env_check_pkg_talker]: AAE5303 talker ready (publishing at 2 Hz).
+[talker-1] [INFO] [1769768581.502015683] [env_check_pkg_talker]: Publishing: 'AAE5303 hello #0'
+[listener-2] [INFO] [1769768581.502883640] [env_check_pkg_listener]: I heard: 'AAE5303 hello #0'
+[talker-1] [INFO] [1769768582.001327289] [env_check_pkg_talker]: Publishing: 'AAE5303 hello #1'
+[listener-2] [INFO] [1769768582.001871478] [env_check_pkg_listener]: I heard: 'AAE5303 hello #1'
+[talker-1] [INFO] [1769768582.501655598] [env_check_pkg_talker]: Publishing: 'AAE5303 hello #2'
+[listener-2] [INFO] [1769768582.502207767] [env_check_pkg_listener]: I heard: 'AAE5303 hello #2'
+[talker-1] [INFO] [1769768583.001032573] [env_check_pkg_talker]: Publishing: 'AAE5303 hello #3'
+[listener-2] [INFO] [1769768583.001897496] [env_check_pkg_listener]: I heard: 'AAE5303 hello #3'
+```
 **Screenshot:**  
-_[Include one screenshot showing talker + listener running]_
+_<img width="982" height="286" alt="talker_listener" src="https://github.com/user-attachments/assets/2fcef2c6-d4a5-4f30-8a37-318638cc83e1" />
 
-![Talker and Listener Running](path/to/your/screenshot.png)
 
 ---
 
@@ -361,13 +401,13 @@ _[2026/1/30]_
 
 Before submitting, ensure you have:
 
-- [ ] Filled in all system information
-- [ ] Included actual terminal outputs (not just screenshots)
-- [ ] Provided at least 2 screenshots (Python tests + ROS talker/listener)
-- [ ] Documented 2–3 real problems with solutions
-- [ ] Completed the AI usage section with exact prompts
-- [ ] Written a thoughtful reflection (3–5 sentences)
-- [ ] Signed the declaration
+- [√] Filled in all system information
+- [√] Included actual terminal outputs (not just screenshots)
+- [√] Provided at least 2 screenshots (Python tests + ROS talker/listener)
+- [√] Documented 2–3 real problems with solutions
+- [√] Completed the AI usage section with exact prompts
+- [√] Written a thoughtful reflection (3–5 sentences)
+- [√] Signed the declaration
 
 ---
 
